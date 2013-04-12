@@ -1,4 +1,12 @@
 #! /usr/bin/python3
+try:
+  import settings
+except ImportError as e:
+    print("ERROR: Failed to import settings.py. Make sure it exists and that no syntax errors are present. Detailed error follows.")
+    print("-----------------------------------------------------------------------------------------------------------------------")
+    print(e)
+    exit()
+
 import re
 
 data = open("base.make").read().split('\n')

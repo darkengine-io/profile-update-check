@@ -9,13 +9,14 @@ except ImportError as e:
 
 import re
 
-data = open("base.make").read().split('\n')
-lines = []
-versions = {}
+for f in settings.fullPath:
+  data = open(f).read().split('\n')
+  lines = []
+  versions = {}
 
-for s in data:
-  if s[:7] == 'project' and '][version]' in s:
-    versions[(s[s.index('[')+1:s.index(']')])] = re.sub('[ "]', '', s[s.index('=')+1:])
-    lines.append(s)
+  for s in data:
+    if s[:7] == 'project' and '][version]' in s:
+      versions[(s[s.index('[')+1:s.index(']')])] = re.sub('[ "]', '', s[s.index('=')+1:])
+      lines.append(s)
 
-print(versions)
+  print(f+": "+versions.__str__())

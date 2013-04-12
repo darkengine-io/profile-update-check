@@ -1,0 +1,11 @@
+# Copy this file and alter to suit your profile.
+# The internal logic shouldn't matter as long as there is an array called
+# fullPath which contains absolute paths to each .make file to parse.
+
+location = "/home/simon/OpenSourcery/turnip/os_project/"
+files = ["base.make", "demo.make", "images.make", "os_project.make", "panels.make"]
+
+fullPath = []
+
+for f in files:
+  fullPath.append(location+f)

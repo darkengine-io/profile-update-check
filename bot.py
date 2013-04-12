@@ -24,3 +24,9 @@ for f in settings.fullPath:
 
 for project in versions.items():
   manifest = minidom.parseString(urllib.request.urlopen("http://updates.drupal.org/release-history/"+project[0]+"/7.x").read())
+  latestversion = manifest.getElementsByTagName("version")[0].childNodes[0].nodeValue[4:]
+  if project[1] != latestversion:
+    print(project[0])
+    print(latestversion)
+    print(project[1])
+    print('')

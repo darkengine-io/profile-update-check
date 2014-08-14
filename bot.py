@@ -15,12 +15,10 @@ versions = {}
 
 for f in settings.fullPath:
   data = open(f).read().split('\n')
-  lines = []
 
   for s in data:
     if s[:7] == 'project' and '][version]' in s:
       versions[(s[s.index('[')+1:s.index(']')])] = re.sub('[ "]', '', s[s.index('=')+1:])
-      lines.append(s)
 
 for project in versions.items():
   manifest = minidom.parseString(urllib.request.urlopen("http://updates.drupal.org/release-history/"+project[0]+"/7.x").read())
